@@ -1,0 +1,23 @@
+button {
+    border-radius: 20px;
+    border: 1px solid var(--primary-color);
+    background-color: var(--secondary-color);
+    color: #FFFFFF;
+    font-size: 12px;
+    font-weight: bold;
+    padding: 12px 45px;
+    text-transform: uppercase;
+    cursor: pointer;
+    border-color: rgba(243, 241, 241, 0.24);
+    box-shadow: 0 15px 15px rgba(0,0,0,0.06);
+
+}
+
+button:hover {
+    transform: scale(1.05);
+}
+
+button.signup_btn {
+    background-color: transparent;
+    border-color: #FFFFFF;
+}
