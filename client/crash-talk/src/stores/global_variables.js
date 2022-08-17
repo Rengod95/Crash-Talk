@@ -1,8 +1,9 @@
 const GV = (function () {
-  const URL = "http://localhost:3000/";
+  const URL = "http://localhost:5000/";
   const HEADER = {
     register: "REGISTER_USER",
     login: "LOGIN_USER",
+    room_join: "JOIN_ROOM",
   };
   const defaultUserForm = {
     name: undefined,

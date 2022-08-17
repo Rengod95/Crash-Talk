@@ -6,7 +6,7 @@ const defaultContext = {
   // 컨텍스트 훅 사용을 위한 스탠다드 객체 탬플릿
   isLoggedIn: undefined,
   loginUserStatus: {},
-  authHandler: (authData, header) => {},
+  authHandler: (header, authData) => {},
 };
 
 const defaultUser = GV.getDefaultUserForm();
@@ -16,7 +16,7 @@ export const AuthContextProvider = (props) => {
   const [isLoggedIn, setIsLoggedIn] = useState(false); // 로그인 상태
   const [loginUserStatus, setLoginUserStatus] = useState(defaultUser); // 유저 정보에 대한 상태
 
-  const authHandler = (authData, header) => {
+  const authHandler = (header, authData) => {
     // auth Data는 header에 따라 다르게 전달됨
     if (header === "LOGOUT_USER") {
       // 로그아웃
