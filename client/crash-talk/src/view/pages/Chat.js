@@ -4,7 +4,7 @@ import queryString from "query-string";
 import { useLocation } from "react-router-dom";
 import io from "socket.io-client";
 
-import GV from "../../stores/global_variables";
+import GV from "../../stores/CONSTANTS/global_variables";
 
 let socket;
 

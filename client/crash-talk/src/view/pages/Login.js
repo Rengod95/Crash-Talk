@@ -3,20 +3,24 @@ import Button from "../components/UI/Button";
 import classes from "./Login.module.css";
 import { AuthContext } from "../../stores/auth-context";
 import { Link } from "react-router-dom";
-import GV from "../../stores/global_variables";
+import GV from "../../stores/CONSTANTS/global_variables";
+import action from "../../actions/action";
 
 const Login = () => {
   const authCtx = useContext(AuthContext);
-  const [loginData, setLoginData] = useState(GV.getDefaultLoginForm()); // input 값 관리를 위한 상태
+  const [inputLoginData, setInputLoginData] = useState(
+    GV.getDefaultLoginForm()
+  ); // input 값 관리를 위한 상태
 
   const inputHandler = (e) => {
-    setLoginData({ ...loginData, [e.target.id]: e.target.value });
+    setInputLoginData({ ...inputLoginData, [e.target.id]: e.target.value });
   };
 
   const loginSubmitHandler = (event) => {
     event.preventDefault();
-    authCtx.authHandler(GV.getHeaders().login, loginData);
-    setLoginData(GV.getDefaultLoginForm);
+    action.callLoginAction(inputLoginData);
+    authCtx.loginStatusHandler(action.dispatch());
+    setInputLoginData(GV.getDefaultLoginForm);
   };
 
   return (
