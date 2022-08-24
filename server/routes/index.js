@@ -26,11 +26,23 @@ router.post("/login", (req, res) => {
     connection.query(checkEmail, function (err, rows) {
         if (req.headers.header === 'LOGIN_USER'){
             if (rows.length == 0) {
-                res.send('가입하지 않은 유저입니다.');
+                res.json({
+                    validity: false,
+                    reason: '가입한 이메일이 없습니다.',
+                    userInfo: req.body,
+                });
             } else if (password !== rows[0]['password']) {
-                res.send('비밀번호가 일치하지 않습니다.');
+                res.json({
+                    validity: false,
+                    reason: '이메일은 있지만, 비밀번호가 일치하지 않습니다.',
+                    userInfo: req.body,
+                });
             } else {
-                res.json({ message: '로그인 성공', nickname: rows[0]['nickname'] });
+                res.json({
+                    validity: true,
+                    reason: '로그인 성공!',
+                    userInfo: req.body,
+                });
             }
         }
     });
